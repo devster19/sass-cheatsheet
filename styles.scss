@@ -1,21 +1,20 @@
-// SCSS comments (not visible in CSS)
-/* CSS comments (visible in CSS) */
-
 
 // Variables
-$color: black;
+$dark: black;
+$info: green;
+$danger: red;
 
 p {
-  color: $color;
+  color: $dark;
 }
 
 
 // Nesting & Abbreviation
-aside {
+.box {
   border: {
     width: 1px;
     style: solid;
-    color: $color;
+    color: $dark;
   }
 }
 
@@ -24,14 +23,14 @@ nav {
   ul {
     list-style-type: none;
     a {
-      color: $color;
+      color: $dark;
       &:hover, &:focus, &:active { // Skip default space: `a:hover` instead of `a :hover`
-        color: red;
+        color: $danger;
       }
     }
   }
   body.blog & { // Skip default nesting: `body.blog nav` instead of `nav body.blog`
-    background: green;
+    background: $info;
   }
 }
 
@@ -39,12 +38,12 @@ nav {
 .infobox {
   border: 1px solid #ccc;
   padding: 10px;
-  color: $color;
+  color: $dark;
 }
 
 .success {
   @extend .infobox;
-  border-color: green;
+  border-color: $info;
 }
 
 // The % prefix creates rules that never get used on their own.
@@ -60,7 +59,7 @@ nav {
 
 // Mixins
 @mixin outline {
-  border: 1px solid black;
+  border: 1px solid $dark;
 }
 @mixin animate( $property, $duration, $easing ) {
   transition: $property $duration $easing;
@@ -69,7 +68,7 @@ nav {
   transition: $property $duration $easing;
 }
 
-aside {
+.box {
   border-radius: 10px;
   @include outline;
 }
@@ -89,7 +88,7 @@ nav a {
 
 
 // Functions
-$highlight: green;
+$highlight: orange;
 
 p {
   color: lighten( $highlight, 20% );
