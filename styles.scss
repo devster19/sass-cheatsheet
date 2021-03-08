@@ -1,4 +1,7 @@
 
+// Import/Embed (.scss files only)
+@import '_normalize' // Prevent separate compiling with a leading underscore: `_normalize.scss`
+
 // Variables
 $dark: black;
 $info: green;
@@ -117,16 +120,26 @@ $list: (orange, purple, teal);
 $total: 10;
 $step: 360deg / $total;
 @for $i from 1 through $total {
-   .ray:nth-child(#{$i}){
+   .bgcolor:nth-child(#{$i}){
       background: adjust-hue( blue, $i * $step );
    }
 }
 
+$i: 1;
+@while $i < 5 {
+  .width-#{$i}{
+    width: 10em + $i;
+  }
+  $i: $i + 1;
+}
+
 // If/Else
-p {
-  margin-left: if( $i % 2 == 0, 0px, 50px );
+@mixin text-color($color){
+  @if ($color === $dark){
+    background-color: #fff;
+  }else{
+    background-color: #000;
+  }
 }
 
 
-// Import/Embed (.scss files only)
-@import 'normalize' // Prevent separate compiling with a leading underscore: `_normalize.scss`
